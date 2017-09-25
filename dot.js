@@ -7,12 +7,12 @@ function Dot(id) {
   this.blue=random(0,256);
   this.array_x=[];
   this.array_y=[];
-  this.speed=10;
+  this.speed=speed;
   this.length=final_time;
   this.alive=true;
   this.score=0;
   this.id=id;
-  this.mut_rate=5; // %
+  this.mut_rate=mut_rate; // %
 
   this.init=function(){
     for (var i = 0; i < final_time; i++) {

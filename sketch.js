@@ -5,23 +5,26 @@ var obstacle2;
 var goal; // The white circle dots hqve to reach
 var time=0; // Units of time
 var final_time=100;
-var framerate=300;
+//var framerate=300;
 var dot_number=50; // Number of dots per gen
 var gen_number=1;
 var total_score=0;
 var show=true;
 var pick=[];
 var paused=false;
+var mut_rate=5; // In %
+var speed=15; // how many pixels a dot will travel per time unit
 
 function setup() {
-  var canvas = createCanvas(500, 500);
+  var canvas = createCanvas(600, 500);
   canvas.position(window.innerWidth/2-width/2, window.innerHeight/2-height/2);
   canvas.parent('myContainer');
-  frameRate(framerate);
+  //frameRate(framerate);
   background(0);
   goal=new Goal();
   init_dot(dot_number); // Fill the dot array and call the init method for each dot
   noStroke();
+  restart();
 }
 
 function draw() {
@@ -68,6 +71,27 @@ function clicked2(){
 }
 
 function restart(){
+  final_time = Number(document.getElementById("final_time").value);
+  console.log(final_time);
+  if(isNaN(final_time) || final_time < 5){
+    final_time=100;
+    document.getElementById("final_time").value=100;
+  }
+  dot_number = document.getElementById("dot_number").value;
+  if(isNaN(dot_number) || dot_number < 5){
+    dot_number=50;
+    document.getElementById("dot_number").value=50;
+  }
+  mut_rate = document.getElementById("mut_rate").value;
+  if(isNaN(mut_rate) || mut_rate < 1){
+    mut_rate=5;
+    document.getElementById("mut_rate").value=5;
+  }
+  speed = document.getElementById("speed").value;
+  if(isNaN(speed) || speed < 2){
+    speed=15;
+    document.getElementById("speed").value=15;
+  }
   dot2=[];
   dot=[];
   init_dot(dot_number);
@@ -78,7 +102,6 @@ function restart(){
   show=true;
   pick=[];
   document.getElementById("generation").innerHTML="Generation n°1";
-  document.getElementById("finaltext").innerHTML="";
 }
 
 
@@ -123,6 +146,5 @@ function collide_goal(dot){
   if(dist(dot.x,dot.y,goal.x,goal.y)<goal.size/2){
     console.log("A dot just won !");
     paused=true;
-    document.getElementById("finaltext").innerHTML="A dot just won !";
   }
 }
