@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="p5.js"></script>
+    <script src="p5.dom.js"></script>
+    <script src="dot.js"></script>
+    <script src="goal.js"></script>
+    <script src="sketch.js"></script>
+    <style> body {padding: 0; margin: 0;} </style>
+  </head>
+  <body>
+    <div id='myContainer'></div>
+    <h4 style="position: absolute; left: 10px; top: 30px; width: 150px;" id="generation">Generation n°1</h4>
+    <button onclick="clicked2()" style="position: absolute; left: 10px; top: 100px;">Pause</button>
+    <button onclick="restart()" style="position: absolute; left: 10px; top: 150px;">Restart</button>
+    <hr style="position: absolute; left: 10px; top: 200px; width: 150px;"></hr>
+    <h4 style="position: absolute; left: 10px; top: 200px;">Number of dots per gen :</h4>
+    <input style="position: absolute; left: 10px; top: 250px; width: 20px;"></input>
+    <hr style="position: absolute; left: 10px; top: 290px; width: 150px;"></hr>
+    <h4 id="finaltext" style="position: absolute; left: 10px; top: 330px; width: 150px;"></h4>
+  </body>
+</html>
