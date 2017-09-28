@@ -37,7 +37,7 @@ function draw() {
       for (var i = 0; i < dot.length; i++) { // For all dots
         if(dot[i].alive){
           collide_goal(dot[i]);    // Check if the dot hits the goal
-          dot[i].move(time);
+          dot[i].move(time);       //Move the dot dor a time unit
           if(show){
             dot[i].show();
           }
@@ -52,7 +52,7 @@ function draw() {
           total_score=total_score+dot[j].score;
         }
         for (var k = 0; k < dot.length; k++) {
-          dot[k].score=Math.round(dot[k].score/total_score*100);
+          dot[k].score=Math.round(dot[k].score/total_score*100); // Set all score property for all the dots
           //console.log("N"+dot[k].id+" scored : "+dot[k].score)
         }
       }
@@ -71,6 +71,7 @@ function clicked2(){
 }
 
 function restart(){
+  // Initialise and constrain all the text box
   final_time = Number(document.getElementById("final_time").value);
   console.log(final_time);
   if(isNaN(final_time) || final_time < 5){
